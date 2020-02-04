@@ -29,30 +29,61 @@
 // External Data Practice with JSON
 // select svg container first
 
-const svg = d3.select('.svg_json')
+const svg1 = d3.select('.svg_json')
 
 d3.json('./planets.json').then(someData => {
 
-    const circs = svg.selectAll('circle')
-    .data(someData)
+    // join the data to circs
+    const circs1 = svg1.selectAll('circle').data(someData)
 
     // add attrs to circs already in DOM (incase if there is hardcoded circle in HTML)
-    circs.attr('cy', 200)
+    circs1.attr('cy', 200)
         .attr('cx', d => d.distance)
         .attr('r', d => d.radius)
         .attr('fill', d => d.fill)
 
     // append the enter selection to the DOM
-    circs.enter()
+    circs1.enter()
         .append('circle')
         .attr('cy', 200)
         .attr('cx', d => d.distance)
         .attr('r', d => d.radius)
         .attr('fill', d => d.fill)
-    
 })
 
 
 
 
 // Linear Scale Practices
+// select the svg container first
+
+const svg2 = d3.select('.svg_linear-scale')
+
+d3.json('./menu.json').then(someData => {
+
+    const y = d3.scaleLinear()
+        .domain([0, 1000])
+        .range([0, 500]);
+
+    // console.log(y(400))
+    // console.log(y(0))
+    // console.log(y(900))
+    
+    // join the data to rects
+    const rects2 = svg2.selectAll('rect').data(someData)
+    
+    // update rects that are already in DOM / add attrs to rects that are already in DOM
+    rects2.attr('width', 50)
+        .attr('height', d => y(d.orders))
+        .attr('fill', 'orange')
+        .attr('x', (d,i) => i * 70)
+    
+    // append enter selection to the DOM
+    rects2.enter()
+        .append('rect')
+        .attr('width', 50)
+        .attr('height', d => y(d.orders))
+        .attr('fill', 'orange')
+        .attr('x', (d,i) => i * 70)
+
+})
