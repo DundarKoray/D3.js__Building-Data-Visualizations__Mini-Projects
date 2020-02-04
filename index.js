@@ -61,14 +61,15 @@ const svg2 = d3.select('.svg_linear-scale')
 
 d3.json('./menu.json').then(someData => {
 
+    //scaling half size
     const y = d3.scaleLinear()
         .domain([0, 1000])
         .range([0, 500]);
 
-    // console.log(y(400))
-    // console.log(y(0))
-    // console.log(y(900))
-    
+    // console.log(y(400)) // output 200
+    // console.log(y(0)) // output 0
+    // console.log(y(900)) // output 450
+
     // join the data to rects
     const rects2 = svg2.selectAll('rect').data(someData)
     
