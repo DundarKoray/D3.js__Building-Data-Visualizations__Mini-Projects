@@ -29,7 +29,7 @@
 // External Data Practice with JSON
 // select svg container first
 
-const svg = d3.select('svg')
+const svg = d3.select('.svg_json')
 
 d3.json('./planets.json').then(someData => {
 
@@ -51,3 +51,8 @@ d3.json('./planets.json').then(someData => {
         .attr('fill', d => d.fill)
     
 })
+
+
+
+
+// Linear Scale Practices
