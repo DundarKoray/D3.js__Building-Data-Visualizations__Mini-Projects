@@ -88,3 +88,13 @@ d3.json('./menu.json').then(someData => {
         .attr('x', (d,i) => i * 70)
 
 })
+
+
+
+
+
+
+
+
+// Band Scale
+// select the svg container first
