@@ -149,6 +149,7 @@ d3.json('./menu.json').then(someData => {
     // create and call the axes
     const xAxis = d3.axisBottom(x)
     const yAxis = d3.axisLeft(y)
+     .ticks(3)
 
     xAxisGroup.call(xAxis)
     yAxisGroup.call(yAxis)
