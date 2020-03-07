@@ -96,11 +96,20 @@ const xAxisGroup = graph.append('g')
     .attr('transform', `translate(0, ${graphHeight})`);
 const yAxisGroup = graph.append('g');
 
-d3.json('./menu.json').then(someData => {
+// d3.json('./menu.json').then(someData => {
+db.collection('dishes').get().then(res => { 
+    
+    //getting the data from firestore
+    var data = []
+    res.docs.forEach(doc => {
+        data.push(doc.data())
+    })
+
+    console.log(data)
 
     //scaling half size
     const y = d3.scaleLinear()
-        .domain([0, d3.max(someData, d => d.orders)])
+        .domain([0, d3.max(data, d => d.orders)])
         .range([graphHeight, 0]);
 
         // console.log(y(400)) // output 200
@@ -119,7 +128,7 @@ d3.json('./menu.json').then(someData => {
 
 
     const x = d3.scaleBand()
-        .domain(someData.map(item => item.name))
+        .domain(data.map(item => item.name))
         .range([0, 500])
         .paddingInner(0.2)
         .paddingOuter(0.2)
@@ -128,7 +137,7 @@ d3.json('./menu.json').then(someData => {
 
     // join the data to rects
     const rects2 = graph.selectAll('rect')
-        .data(someData)
+        .data(data)
     
     // update rects that are already in DOM / add attrs to rects that are already in DOM
     rects2.attr('width', x.bandwidth)
