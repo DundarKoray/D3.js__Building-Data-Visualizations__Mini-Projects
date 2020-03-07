@@ -101,7 +101,7 @@ d3.json('./menu.json').then(someData => {
     //scaling half size
     const y = d3.scaleLinear()
         .domain([0, d3.max(someData, d => d.orders)])
-        .range([0, graphHeight]);
+        .range([graphHeight, 0]);
 
         // console.log(y(400)) // output 200
         // console.log(y(0)) // output 0
