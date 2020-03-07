@@ -90,14 +90,18 @@ const graphHeight = 600 - margin.top - margin.bottom;
 const graph = svg2.append('g')
     .attr('width', graphWidth)
     .attr('height', graphHeight)
-    .attr('transfrom', `translate(${margin.left}, ${margin.top})`)
+    .attr('transform', `translate(${margin.left}, ${margin.top})`)
+
+const xAxisGroup = graph.append('g')
+    .attr('transform', `translate(0, ${graphHeight})`);
+const yAxisGroup = graph.append('g');
 
 d3.json('./menu.json').then(someData => {
 
     //scaling half size
     const y = d3.scaleLinear()
         .domain([0, d3.max(someData, d => d.orders)])
-        .range([0, 500]);
+        .range([0, graphHeight]);
 
         // console.log(y(400)) // output 200
         // console.log(y(0)) // output 0
@@ -139,5 +143,12 @@ d3.json('./menu.json').then(someData => {
         .attr('height', d => y(d.orders))
         .attr('fill', 'orange')
         .attr('x', d => (x(d.name)))
+
+    // create and call the axes
+    const xAxis = d3.axisBottom(x)
+    const yAxis = d3.axisLeft(y)
+
+    xAxisGroup.call(xAxis)
+    yAxisGroup.call(yAxis)
 
 })
