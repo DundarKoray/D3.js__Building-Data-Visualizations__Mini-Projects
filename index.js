@@ -159,4 +159,5 @@ d3.json('./menu.json').then(someData => {
     xAxisGroup.selectAll('text')
         .attr('transform', 'rotate(-40)')
         .attr('text-anchor', 'end')
+        .attr('fill', 'orange')
 })
