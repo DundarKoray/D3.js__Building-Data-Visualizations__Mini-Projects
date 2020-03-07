@@ -25,11 +25,15 @@
 //     .attr('fill', d => d.fill);
 
 
-
+// PLANETS
 // External Data Practice with JSON
 // select svg container first
 
-const svg1 = d3.select('.svg_json')
+// const svg1 = d3.select('.svg_json')
+const svg1 = d3.select('.canvas1')
+    .append('svg')
+    .attr('width', 600)
+    .attr('height', 600)
 
 d3.json('./planets.json').then(someData => {
 
@@ -54,10 +58,39 @@ d3.json('./planets.json').then(someData => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// RESTAURANT ORDERS
 // Linear Scale & Band Scale Practices
 // select the svg container first
 
-const svg2 = d3.select('.svg_linear-scale')
+
+const svg2 = d3.select('.canvas2')
+    .append('svg')
+    .attr('width', 600)
+    .attr('height', 600)
+
+// create margins and dimensions
+const margin = {top:20, right: 20, bottom: 100, left: 100};
+const graphWidth = 600 - margin.left - margin.right;
+const graphHeight = 600 - margin.top - margin.bottom;
+
+const graph = svg2.append('g')
+    .attr('width', graphWidth)
+    .attr('height', graphHeight)
+    .attr('transfrom', `translate(${margin.left}, ${margin.top})`)
 
 d3.json('./menu.json').then(someData => {
 
@@ -90,7 +123,8 @@ d3.json('./menu.json').then(someData => {
     
 
     // join the data to rects
-    const rects2 = svg2.selectAll('rect').data(someData)
+    const rects2 = graph.selectAll('rect')
+        .data(someData)
     
     // update rects that are already in DOM / add attrs to rects that are already in DOM
     rects2.attr('width', x.bandwidth)

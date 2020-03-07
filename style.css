@@ -19,7 +19,7 @@ body {
     
 }
 
-.canvas{
+.canvas1, .canvas2 {
     border: 1px solid black;
 }
 
