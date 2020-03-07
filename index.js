@@ -63,12 +63,23 @@ d3.json('./menu.json').then(someData => {
 
     //scaling half size
     const y = d3.scaleLinear()
-        .domain([0, 1000])
+        .domain([0, d3.max(someData, d => d.orders)])
         .range([0, 500]);
 
-    // console.log(y(400)) // output 200
-    // console.log(y(0)) // output 0
-    // console.log(y(900)) // output 450
+        // console.log(y(400)) // output 200
+        // console.log(y(0)) // output 0
+        // console.log(y(900)) // output 450
+
+
+    // const min = d3.min(someData, d => d.orders)
+    // const max = d3.max(someData, d => d.orders)
+    // const extent = d3.extent(someData, d => d.orders)
+    
+    //console.log(min) //finds the lowest point
+    //console.log(max) //finds the highest point
+    //console.log(extent) //an array with the lowest and highest point
+
+
 
     const x = d3.scaleBand()
         .domain(someData.map(item => item.name))

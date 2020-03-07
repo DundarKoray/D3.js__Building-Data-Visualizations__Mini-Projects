@@ -14,5 +14,9 @@
     {
       "name": "veg surprise",
       "orders": 900
+    },
+    {
+      "name": "veg döner",
+      "orders": 2500
     }
   ]
