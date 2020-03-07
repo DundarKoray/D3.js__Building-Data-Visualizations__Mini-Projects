@@ -132,17 +132,19 @@ d3.json('./menu.json').then(someData => {
     
     // update rects that are already in DOM / add attrs to rects that are already in DOM
     rects2.attr('width', x.bandwidth)
-        .attr('height', d => y(d.orders))
+        .attr('height', d => graphHeight - y(d.orders))
         .attr('fill', 'orange')
         .attr('x', d => x(d.name))
+        .attr('y', d => y(d.orders))
     
     // append enter selection to the DOM
     rects2.enter()
         .append('rect')
         .attr('width', x.bandwidth)
-        .attr('height', d => y(d.orders))
+        .attr('height', d => graphHeight - y(d.orders))
         .attr('fill', 'orange')
         .attr('x', d => (x(d.name)))
+        .attr('y', d => y(d.orders))
 
     // create and call the axes
     const xAxis = d3.axisBottom(x)
