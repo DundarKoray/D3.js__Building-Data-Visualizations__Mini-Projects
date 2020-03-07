@@ -54,7 +54,7 @@ d3.json('./planets.json').then(someData => {
 
 
 
-// Linear Scale Practices
+// Linear Scale & Band Scale Practices
 // select the svg container first
 
 const svg2 = d3.select('.svg_linear-scale')
@@ -70,31 +70,29 @@ d3.json('./menu.json').then(someData => {
     // console.log(y(0)) // output 0
     // console.log(y(900)) // output 450
 
+    const x = d3.scaleBand()
+        .domain(someData.map(item => item.name))
+        .range([0, 500])
+        .paddingInner(0.2)
+        .paddingOuter(0.2)
+    
+    
+
     // join the data to rects
     const rects2 = svg2.selectAll('rect').data(someData)
     
     // update rects that are already in DOM / add attrs to rects that are already in DOM
-    rects2.attr('width', 50)
+    rects2.attr('width', x.bandwidth)
         .attr('height', d => y(d.orders))
         .attr('fill', 'orange')
-        .attr('x', (d,i) => i * 70)
+        .attr('x', d => x(d.name))
     
     // append enter selection to the DOM
     rects2.enter()
         .append('rect')
-        .attr('width', 50)
+        .attr('width', x.bandwidth)
         .attr('height', d => y(d.orders))
         .attr('fill', 'orange')
-        .attr('x', (d,i) => i * 70)
+        .attr('x', d => (x(d.name)))
 
 })
-
-
-
-
-
-
-
-
-// Band Scale
-// select the svg container first
