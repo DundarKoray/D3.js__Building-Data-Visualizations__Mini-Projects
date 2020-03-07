@@ -150,6 +150,7 @@ d3.json('./menu.json').then(someData => {
     const xAxis = d3.axisBottom(x)
     const yAxis = d3.axisLeft(y)
      .ticks(3)
+     .tickFormat(d => d + ' orders')
 
     xAxisGroup.call(xAxis)
     yAxisGroup.call(yAxis)
