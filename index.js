@@ -152,15 +152,19 @@ const update = (data) => {
     // call axis
     xAxisGroup.call(xAxis)
     yAxisGroup.call(yAxis)
-}
+};
+
+let data = [];
 
 // get the data from firestore
-db.collection('dishes').get().then(res => { 
-    
-    var data = []
-    res.docs.forEach(doc => {
-        data.push(doc.data())
-    })
+db.collection('dishes').onSnapshot(res => {
 
-    update(data);
+    res.docChanges().forEach(change => {
+
+        console.log(change.doc.data());
+
+    });
+
+    update(data)
+
 })
