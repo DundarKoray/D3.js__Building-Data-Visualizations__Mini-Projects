@@ -35,6 +35,7 @@ const svg1 = d3.select('.canvas1')
     .attr('width', 600)
     .attr('height', 600)
 
+// get the data from JSON file
 d3.json('./planets.json').then(someData => {
 
     // join the data to circs
@@ -96,56 +97,49 @@ const xAxisGroup = graph.append('g')
     .attr('transform', `translate(0, ${graphHeight})`);
 const yAxisGroup = graph.append('g');
 
-// d3.json('./menu.json').then(someData => {
-db.collection('dishes').get().then(res => { 
+
+// scales
+const y = d3.scaleLinear()
+    .range([graphHeight, 0]);
+
+const x = d3.scaleBand()
+    .range([0, 500])
+    .paddingInner(0.2)
+    .paddingOuter(0.2)
+
+// create the axes
+const xAxis = d3.axisBottom(x)
+const yAxis = d3.axisLeft(y)
+     .ticks(3)
+     .tickFormat(d => d + ' orders');
+
+// update x axis text
+xAxisGroup.selectAll('text')
+    .attr('transform', 'rotate(-40)')
+    .attr('text-anchor', 'end')
+    .attr('fill', 'orange')
+
+// update function: D3 UPDATE PATTERN
+const update = (data) => {
     
-    //getting the data from firestore
-    var data = []
-    res.docs.forEach(doc => {
-        data.push(doc.data())
-    })
-
-    console.log(data)
-
-    //scaling half size
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.orders)])
-        .range([graphHeight, 0]);
-
-        // console.log(y(400)) // output 200
-        // console.log(y(0)) // output 0
-        // console.log(y(900)) // output 450
-
-
-    // const min = d3.min(someData, d => d.orders)
-    // const max = d3.max(someData, d => d.orders)
-    // const extent = d3.extent(someData, d => d.orders)
-    
-    //console.log(min) //finds the lowest point
-    //console.log(max) //finds the highest point
-    //console.log(extent) //an array with the lowest and highest point
-
-
-
-    const x = d3.scaleBand()
-        .domain(data.map(item => item.name))
-        .range([0, 500])
-        .paddingInner(0.2)
-        .paddingOuter(0.2)
-    
-    
+    // updating scale domains
+    y.domain([0, d3.max(data, d => d.orders)])  
+    x.domain(data.map(item => item.name))
 
     // join the data to rects
     const rects2 = graph.selectAll('rect')
         .data(data)
     
-    // update rects that are already in DOM / add attrs to rects that are already in DOM
+    // remove exit selection
+    rects2.exit().remove()
+
+    // update rects that are already in DOM 
     rects2.attr('width', x.bandwidth)
         .attr('height', d => graphHeight - y(d.orders))
         .attr('fill', 'orange')
         .attr('x', d => x(d.name))
         .attr('y', d => y(d.orders))
-    
+
     // append enter selection to the DOM
     rects2.enter()
         .append('rect')
@@ -155,18 +149,18 @@ db.collection('dishes').get().then(res => {
         .attr('x', d => (x(d.name)))
         .attr('y', d => y(d.orders))
 
-    // create and call the axes
-    const xAxis = d3.axisBottom(x)
-
-    const yAxis = d3.axisLeft(y)
-     .ticks(3)
-     .tickFormat(d => d + ' orders');
-
+    // call axis
     xAxisGroup.call(xAxis)
     yAxisGroup.call(yAxis)
+}
 
-    xAxisGroup.selectAll('text')
-        .attr('transform', 'rotate(-40)')
-        .attr('text-anchor', 'end')
-        .attr('fill', 'orange')
+// get the data from firestore
+db.collection('dishes').get().then(res => { 
+    
+    var data = []
+    res.docs.forEach(doc => {
+        data.push(doc.data())
+    })
+
+    update(data);
 })
