@@ -160,6 +160,7 @@ const update = (data) => {
         .merge(rects2)
         //transition starts
         .transition(t)
+            .attrTween('width', widthTween)
             //ending conditions
             .attr('y', d => y(d.orders))
             .attr('height', d => graphHeight - y(d.orders))
@@ -201,3 +202,22 @@ db.collection('dishes').onSnapshot(res => {
     update(data)
 
 })
+
+
+
+// TWEENS
+
+const widthTween = (d) => {
+
+    // define interpolation
+    // d3.interpolate returns a function which we call 'i'
+    let i = d3.interpolate(0, x.bandwidth);
+
+    // return a function which takes in a time ticker 't'
+    return function(t) {
+        
+        // return the value from passing the ticker into the interpolation
+        return i(t); 
+    }
+    
+}
