@@ -52,8 +52,11 @@ d3.json('./planets.json').then(someData => {
         .append('circle')
         .attr('cy', 200)
         .attr('cx', d => d.distance)
-        .attr('r', d => d.radius)
+        .attr('r', 0)
         .attr('fill', d => d.fill)
+        //transition starts
+        .transition().duration(3500)
+            .attr('r', d => d.radius)
 })
 
 
@@ -151,7 +154,7 @@ const update = (data) => {
         //starting condition for y 0
         .attr('y', graphHeight)
         //transition starts
-        .transition().duration(2500)
+        .transition().duration(3500)
             //ending conditions
             .attr('y', d => y(d.orders))
             .attr('height', d => graphHeight - y(d.orders))
