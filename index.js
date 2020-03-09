@@ -122,6 +122,8 @@ xAxisGroup.selectAll('text')
     .attr('text-anchor', 'end')
     .attr('fill', 'orange')
 
+const t = d3.transition().duration(3500)
+
 // update function: D3 UPDATE PATTERN
 const update = (data) => {
     
@@ -140,9 +142,9 @@ const update = (data) => {
     rects2.attr('width', x.bandwidth)
         .attr('fill', 'orange')
         .attr('x', d => x(d.name))
-        .transition().duration(3500)
-        .attr('height', d => graphHeight - y(d.orders))
-        .attr('y', d => y(d.orders))
+            .transition(t)
+            .attr('height', d => graphHeight - y(d.orders))
+            .attr('y', d => y(d.orders))
 
     // append enter selection to the DOM
     rects2.enter()
@@ -155,7 +157,7 @@ const update = (data) => {
         //starting condition for y 0
         .attr('y', graphHeight)
         //transition starts
-        .transition().duration(3500)
+            .transition(t)
             //ending conditions
             .attr('y', d => y(d.orders))
             .attr('height', d => graphHeight - y(d.orders))
