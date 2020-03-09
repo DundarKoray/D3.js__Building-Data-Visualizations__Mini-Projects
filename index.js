@@ -150,7 +150,7 @@ const update = (data) => {
     // append enter selection to the DOM
     rects2.enter()
         .append('rect')
-        .attr('width', x.bandwidth)
+        // .attr('width', 0)
         //starting condition for x 0
         .attr('height', 0)
         .attr('fill', 'orange')
@@ -211,7 +211,7 @@ const widthTween = (d) => {
 
     // define interpolation
     // d3.interpolate returns a function which we call 'i'
-    let i = d3.interpolate(0, x.bandwidth);
+    let i = d3.interpolate(0, x.bandwidth());
 
     // return a function which takes in a time ticker 't'
     return function(t) {
@@ -219,5 +219,5 @@ const widthTween = (d) => {
         // return the value from passing the ticker into the interpolation
         return i(t); 
     }
-    
+
 }
