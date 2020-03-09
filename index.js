@@ -144,10 +144,18 @@ const update = (data) => {
     rects2.enter()
         .append('rect')
         .attr('width', x.bandwidth)
-        .attr('height', d => graphHeight - y(d.orders))
+        //starting condition for x 0
+        .attr('height', 0)
         .attr('fill', 'orange')
         .attr('x', d => (x(d.name)))
-        .attr('y', d => y(d.orders))
+        //starting condition for y 0
+        .attr('y', graphHeight)
+        //transition starts
+        .transition().duration(2500)
+            //ending conditions
+            .attr('y', d => y(d.orders))
+            .attr('height', d => graphHeight - y(d.orders))
+
 
     // call axis
     xAxisGroup.call(xAxis)
