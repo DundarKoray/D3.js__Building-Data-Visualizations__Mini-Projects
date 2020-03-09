@@ -142,9 +142,10 @@ const update = (data) => {
     rects2.attr('width', x.bandwidth)
         .attr('fill', 'orange')
         .attr('x', d => x(d.name))
-            .transition(t)
-            .attr('height', d => graphHeight - y(d.orders))
-            .attr('y', d => y(d.orders))
+        // codes below is commented because I am merging it in enter section
+        // .transition(t)
+        //     .attr('height', d => graphHeight - y(d.orders))
+        //     .attr('y', d => y(d.orders))
 
     // append enter selection to the DOM
     rects2.enter()
@@ -156,8 +157,9 @@ const update = (data) => {
         .attr('x', d => (x(d.name)))
         //starting condition for y 0
         .attr('y', graphHeight)
+        .merge(rects2)
         //transition starts
-            .transition(t)
+        .transition(t)
             //ending conditions
             .attr('y', d => y(d.orders))
             .attr('height', d => graphHeight - y(d.orders))
