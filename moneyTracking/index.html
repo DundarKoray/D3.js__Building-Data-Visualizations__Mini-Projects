@@ -13,6 +13,37 @@
         <h2 class="center white-text">Money Tracking App</h2>
         <p class="flow-text grey-text center text-lighten-2">No more running out of money at the end of month...</p>
     </div>
+
+    <!-- container centers everything and section adds some padding -->
+    <div class="container section">
+        <div class="row">
+            <!-- small size screen full width, medium and above screen half -->
+            <!-- left col with form -->
+            <div class="col s12 m6">
+                <form class="card">
+                    <span class="card-title indigo-text">Add Item</span>
+                    <div class="input-field">
+                        <input type="text" id="name">
+                        <label for="name">Item Name</label>
+                    </div> 
+                    <div class="input-field">
+                        <input type="text" id="cost">
+                        <label for="name">Item Cost (€)</label>
+                    </div>
+                    <div class="input-field">
+                        <button class="btn-large pink white-text">Add Item</button>
+                    </div> 
+                 </form>
+            </div>
+            <!-- right col with graph. We want a gap between cols that's why m5 -->
+            <div class="col s12 m5 push-m1">
+                <div class="canvas">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://d3js.org/d3.v5.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
