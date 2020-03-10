@@ -15,11 +15,11 @@
         }
     </style>
 </head>
-<body class="indigo">
-    <div class="header indigo darken-1 section">
+<body class="grey lighten-3">
+    <div class="header grey lighten-2 section">
         <button><a href="../index.html">Return to main page</a></button>
-        <h2 class="center white-text">Money Tracking App</h2>
-        <p class="flow-text grey-text center text-lighten-2">No more running out of money at the end of month...</p>
+        <h2 class="center orange-text thin">Money Tracking App</h2>
+        <p class="flow-text black-text center text-lighten-2 thin">No more running out of money at the end of month...</p>
     </div>
 
     <!-- container centers everything and section adds some padding -->
@@ -31,7 +31,7 @@
                 <form class="card">
                     <!-- card content gives padding -->
                     <div class="card-content">
-                        <span class="card-title indigo-text">Add Item:</span>
+                        <span class="card-title orange-text thin">Add Item:</span>
                         <div class="input-field">
                             <input type="text" id="name">
                             <label for="name">Item Name</label>
@@ -42,11 +42,11 @@
                         </div>
                         <!-- button -->
                         <div class="input-field center">
-                            <button class="btn-large pink white-text">Add Item</button>
+                            <button class="btn-large orange white-text thin btn-floating btn-large pulse">Add</button>
                         </div> 
                         <!-- error section -->
                         <div class="input-field center">
-                            <p class="red-text" id="error">test errors</p>
+                            <p class="red-text" id="error">&nbsp</p>
                         </div> 
                     </div>
                  </form>
@@ -60,12 +60,10 @@
         </div>
     </div>
 
+    <!-- FIREBASE -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-firestore.js"></script>
-
-    
-
     <script>
     // Initialize Firebase
     var config = {
@@ -85,9 +83,13 @@
     const settings = { timestampsInSnapshots: true}
     db.settings(settings)
     </script>
+
+    <!-- D3.js -->
     <script src="https://d3js.org/d3.v5.js"></script>
-    <!-- Compiled and minified JavaScript -->
+
+    <!-- Materiaize CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <script src="index.js"></script>
     <script src="graph.js.js"></script>
 </body>
