@@ -6,6 +6,14 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Money Tracking App</title>
+    <style>
+        h2, p {
+            margin: 10px 0;
+        }
+        header {
+            margin-bottom: 40px;
+        }
+    </style>
 </head>
 <body class="indigo">
     <div class="header indigo darken-1 section">
@@ -21,23 +29,26 @@
             <!-- left col with form -->
             <div class="col s12 m6">
                 <form class="card">
-                    <span class="card-title indigo-text">Add Item</span>
-                    <div class="input-field">
-                        <input type="text" id="name">
-                        <label for="name">Item Name</label>
-                    </div> 
-                    <div class="input-field">
-                        <input type="text" id="cost">
-                        <label for="name">Item Cost (€)</label>
+                    <!-- card content gives padding -->
+                    <div class="card-content">
+                        <span class="card-title indigo-text">Add Item:</span>
+                        <div class="input-field">
+                            <input type="text" id="name">
+                            <label for="name">Item Name</label>
+                        </div> 
+                        <div class="input-field">
+                            <input type="text" id="cost">
+                            <label for="name">Item Cost (€)</label>
+                        </div>
+                        <!-- button -->
+                        <div class="input-field center">
+                            <button class="btn-large pink white-text">Add Item</button>
+                        </div> 
+                        <!-- error section -->
+                        <div class="input-field center">
+                            <p class="red-text" id="error">test errors</p>
+                        </div> 
                     </div>
-                    <!-- button -->
-                    <div class="input-field center">
-                        <button class="btn-large pink white-text">Add Item</button>
-                    </div> 
-                    <!-- error section -->
-                    <div class="input-field center">
-                        <p class="red-text" id="error">test errors</p>
-                    </div> 
                  </form>
             </div>
             <!-- right col with graph. We want a gap between cols that's why m5 -->
