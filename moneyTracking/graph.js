@@ -1,5 +1,5 @@
 /////////////////////////////////
-//** PIE CHART **//
+//** PIE CHART DIMENSIONS **//
 
 // dimensions
 const dims = { height: 300, width: 300, radius: 150 };
@@ -26,14 +26,35 @@ const pie = d3.pie()
     .value(d => d.cost)
 
 
-const angles = pie([
-    { name: 'rent', cost: 500 },
-    { name: 'bills', cost: 300 },
-    { name: 'gaming', cost: 200 }
-])
-
+// creating outer and inner arc
 const arcPath = d3.arc()
     .outerRadius(dims.radius)
     .innerRadius(dims.radius / 2);
 
-console.log(arcPath(angles[0]))
+
+/////////////////////////////////
+//** FIRESTORE CONNECTION **//
+
+db.collection('expenses').onSnapshot(res => {
+    
+    res.docChanges().forEach(change => {
+
+        const doc = {...change.doc.data(), id: change.doc.id};
+
+    })
+
+
+}) 
+    
+    
+    
+    
+/* 
+    //dummy data
+    const angles = pie([
+        { name: 'rent', cost: 500 },
+        { name: 'bills', cost: 300 },
+        { name: 'gaming', cost: 200 }
+    ])
+    console.log(arcPath(angles[0]))
+*/
