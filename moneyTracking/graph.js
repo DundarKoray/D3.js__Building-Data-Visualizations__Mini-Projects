@@ -35,8 +35,14 @@ const arcPath = d3.arc()
 /////////////////////////////////
 //** FIRESTORE CONNECTION **//
 
+// update function 
+const update = (data) => {
+    console.log(data)
+}
+
 let data = [];
 
+//connecting firestore data
 db.collection('expenses').onSnapshot(res => {
     
     res.docChanges().forEach(change => {
@@ -44,6 +50,7 @@ db.collection('expenses').onSnapshot(res => {
         const doc = {...change.doc.data(), id: change.doc.id};
         // console.log(doc)
 
+        //realtime-update
         switch (change.type) {
             case 'added':
                 data.push(doc)
@@ -59,7 +66,9 @@ db.collection('expenses').onSnapshot(res => {
                 break;
         }
 
-    })
+    });
+
+    update(data)
 
 
 }) 
