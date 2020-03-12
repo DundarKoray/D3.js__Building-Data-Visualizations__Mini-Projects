@@ -31,6 +31,7 @@ const arcPath = d3.arc()
     .outerRadius(dims.radius)
     .innerRadius(dims.radius / 2);
 
+// this code gives different color for each data
 const colour = d3.scaleOrdinal(d3['schemeSet3'])
 
 /////////////////////////////////
@@ -42,24 +43,25 @@ const update = (data) => {
     // update colour scale domain (map throws a new array)
     // console.log(data)
     
+    // this code gives different color for each data
     colour.domain(data.map(d => d.name))
-
-
-
+    
+    
+    
     // join enchanced (pie) data to path elements
     const paths = graph.selectAll('path')
-        .data(pie(data))
-
-        console.log(pie(data))
-
+    .data(pie(data))
+    
+    // console.log(pie(data))
+    
     paths.enter()
-        .append('path')
-            .attr('class', 'arc')
-            .attr('d', arcPath)
-            .attr('stroke', '#fff')
-            .attr('stroke-width', 3)
-            // .attr('fill', 'orange')
-            .attr('fill', d => colour(d.name))
+    .append('path')
+    .attr('class', 'arc')
+    .attr('d', arcPath)
+    .attr('stroke', '#fff')
+    .attr('stroke-width', 3)
+            // this code gives different color for each data
+            .attr('fill', d => colour(d.data.name))
 
 }
 
