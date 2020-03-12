@@ -9,11 +9,11 @@ const cent = { x: (dims.width / 2 + 5), y: (dims.height / 2 + 5) } ;
 /////////////////////////////////
 //** SVG CONTAINER **//
 
-// creating svg
+// creating svg (+150 gives some breathing room)
 const svg = d3.select('.canvas')
     .append('svg')
-    .attr('width', dims.width + 150) // +150 to give some breathing room
-    .attr('height', dims.height + 150) // +150 to give some breathing room
+    .attr('width', dims.width + 150) 
+    .attr('height', dims.height + 150) 
 
 // centering graph in svg
 const graph = svg.append('g')
@@ -51,8 +51,13 @@ const update = (data) => {
     // join enchanced (pie) data to path elements
     const paths = graph.selectAll('path')
     .data(pie(data))
-    
     // console.log(pie(data))
+    
+    // handle the exit selection for graph
+    paths.exit().remove()
+
+    // handle the current DOM path updates,, changes
+    paths.attr('d', arcPath);
     
     paths.enter()
     .append('path')
