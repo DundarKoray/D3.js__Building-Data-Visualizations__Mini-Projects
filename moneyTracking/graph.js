@@ -62,11 +62,15 @@ const update = (data) => {
     paths.enter()
     .append('path')
     .attr('class', 'arc')
-    .attr('d', arcPath)
+    // the code below is disabled because transition is taking care of it now.
+    // .attr('d', arcPath)
     .attr('stroke', '#fff')
     .attr('stroke-width', 3)
-            // this code gives different color for each data
-            .attr('fill', d => colour(d.data.name))
+    // this code gives different color for each data
+    .attr('fill', d => colour(d.data.name))
+    // transition effect
+    .transition().duration(750)
+        .attrTween('d', arcTweenEnter);
 
 }
 
@@ -99,9 +103,19 @@ db.collection('expenses').onSnapshot(res => {
     });
 
     update(data)
+})
 
+ // transition effect function
+ const arcTweenEnter = (d) => {
+    let i = d3.interpolate(d.endAngle, d.startAngle)
 
-}) 
+    // 0 represent start point and 1 end point
+    return function(t){
+        d.startAngle = i(t);
+        return arcPath(d)
+    }
+};
+
     
     
     
