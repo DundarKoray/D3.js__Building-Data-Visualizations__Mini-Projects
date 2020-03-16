@@ -43,7 +43,7 @@ const update = (data) => {
     // update colour scale domain (map throws a new array)
     // console.log(data)
     
-    // this code gives different color for each data
+    // this code gives different color for each data (update colour scale domain)
     colour.domain(data.map(d => d.name))
     
     
@@ -54,7 +54,10 @@ const update = (data) => {
     // console.log(pie(data))
     
     // handle the exit selection for graph
-    paths.exit().remove()
+    paths.exit()
+        .transition().duration(750)
+        .attrTween('d', arcTweenExit)
+    .remove()
 
     // handle the current DOM path updates,, changes
     paths.attr('d', arcPath);
@@ -115,6 +118,16 @@ db.collection('expenses').onSnapshot(res => {
         return arcPath(d)
     }
 };
+
+const arcTweenExit = (d) => {
+    let i = d3.interpolate(d.startAngle, d.endAngle)
+
+    // 0 present start point and 1 end point
+    return function(t) {
+        d.startAngle = i(t);
+        return artPath(d)
+    }
+}
 
     
     
