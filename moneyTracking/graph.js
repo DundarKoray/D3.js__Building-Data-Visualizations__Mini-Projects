@@ -4,7 +4,7 @@
 // dimensions
 const dims = { height: 300, width: 300, radius: 150 };
 // center of the pie chart (+5 gives some breathing room)
-const cent = { x: (dims.width / 2 + 5), y: (dims.height / 2 + 5) } ;
+const cent = { x: (dims.width / 2 + 5), y: (dims.height / 2 + 25) } ;
 
 /////////////////////////////////
 //** SVG CONTAINER **//
@@ -12,8 +12,8 @@ const cent = { x: (dims.width / 2 + 5), y: (dims.height / 2 + 5) } ;
 // creating svg (+150 gives some breathing room)
 const svg = d3.select('.canvas')
     .append('svg')
-    .attr('width', dims.width + 150) 
-    .attr('height', dims.height + 150) 
+    .attr('width', dims.width + 200) 
+    .attr('height', dims.height + 200) 
 
 // centering graph in svg
 const graph = svg.append('g')
@@ -34,19 +34,28 @@ const arcPath = d3.arc()
 // this code gives different color for each data
 const colour = d3.scaleOrdinal(d3['schemeSet3'])
 
+// legend setup
+const legendGroup = svg.append('g')
+    .attr('transform', `translate(${dims.width + 40}, 10)`)
+
+const legend = d3.legendColor()
+    .shape('circle')
+    .shapePadding(10)
+    .scale(colour);
+
 /////////////////////////////////
 //** FIRESTORE CONNECTION **//
 
 
 // update function 
 const update = (data) => {
-    // update colour scale domain (map throws a new array)
-    // console.log(data)
     
     // this code gives different color for each data (update colour scale domain)
     colour.domain(data.map(d => d.name))
     
-    
+    //  update and call legend
+    legendGroup.call(legend);
+    legendGroup.selectAll('text').attr('fill', 'grey')
     
     // join enchanced (pie) data to path elements
     const paths = graph.selectAll('path')
