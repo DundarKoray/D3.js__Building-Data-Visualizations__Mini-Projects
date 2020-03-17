@@ -101,7 +101,11 @@ const update = (data) => {
             tip.show(d, n[i])
             handleMouseOver(d,i,n)
         })
-        .on('mouseout', handleMouseOut)
+        // .on('mouseout', handleMouseOut)
+        .on('mouseout', (d,i,n) => {
+            tip.hide();
+            handleMouseOut(d,i,n)
+        })
         .on('click', handleDelete)
 
 }
