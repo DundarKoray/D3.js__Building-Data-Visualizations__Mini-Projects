@@ -46,9 +46,8 @@ const legend = d3.legendColor()
 const tip = d3.tip()
     .attr('class', 'tip card')
     .html(d => {
-        let content = `<div class="name">${d.data.name}</div>`;
-        content += `<div class="cost">${d.data.cost}€</div>`;
-        content += `<div class="delete">Click slice to delete data</div>`
+        let content = `<div class="name">${d.data.name} ${d.data.cost}€</div>`;
+        content += `<div class="delete">Click to delete data</div>`
         return content
     });
 
@@ -199,7 +198,14 @@ const handleMouseOut = (d, i, n) => {
 
 const handleDelete = (d) => {
     const id = d.data.id;
-    db.collection('expenses').doc(id).delete()
+    // db.collection('expenses').doc(id).delete()
+    let question = prompt('You are about to remove this data. Write "delete" to complete the action!')
+
+    console.log(question)
+    
+    if (question === "delete"){
+        db.collection('expenses').doc(id).delete()
+    }
 }
 
     
