@@ -46,7 +46,10 @@ const legend = d3.legendColor()
 const tip = d3.tip()
     .attr('class', 'tip card')
     .html(d => {
-        return `<p>Hello there</p>`
+        let content = `<div class="name">${d.data.name}</div>`;
+        content += `<div class="cost">${d.data.cost}€</div>`;
+        content += `<div class="delete">Click slice to delete data</div>`
+        return content
     });
 
 graph.call(tip);
