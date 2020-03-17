@@ -43,6 +43,14 @@ const legend = d3.legendColor()
     .shapePadding(10)
     .scale(colour);
 
+const tip = d3.tip()
+    .attr('class', 'tip card')
+    .html(d => {
+        return `<p>Hello there</p>`
+    });
+
+graph.call(tip);
+
 /////////////////////////////////
 //** FIRESTORE CONNECTION **//
 
@@ -89,7 +97,10 @@ const update = (data) => {
     
     // add events
     graph.selectAll('path')
-        .on('mouseover', handleMouseOver)
+        .on('mouseover', (d,i,n) =>{
+            tip.show(d, n[i])
+            handleMouseOver(d,i,n)
+        })
         .on('mouseout', handleMouseOut)
         .on('click', handleDelete)
 
