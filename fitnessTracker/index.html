@@ -8,7 +8,45 @@
     <link rel="stylesheet" href="./styles.css">
     <title>Fitness Tracking App</title>
 </head>
-<body>
+<body class="grey darken-4">
+
+    <div class="nav z-depth-0">
+        <div class="section">
+            <a class="return-button waves-effect waves-light btn thin" href="../index.html">Return to main page</a>
+        </div>
+      <div class="section center">
+          <h3 class="white-text center thin"> EMANKO SPORT</h3>
+        </div>
+    </div>
+    <div class="section center">
+        <p class="grey-text flow-text thin"> A fitness tracking app</p>
+    </div>  
+
+    <div class="container section">
+        <div class="row">
+            <div class="col s12 l5">
+                <button class="active thin" data-activity="cycling">Cycling</button>
+                <button class="thin" data-activity="running">Running</button>
+                <button class="thin" data-activity="swimming">Swimming</button>
+                <button class="thin" data-activity="walking">Walking</button>
+            </div>
+            <div class="col s12 l6.push-l1">
+                <div class="canvas">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form class="col m6 push-m3">
+                <p class="flow-text grey-text center thin">How much <span>cycling</span> have you done today?</p>
+                <input type="text" class="grey-text thin" id="cycling" placeholder="Distance in km">
+                <p class="center pink-text error text-lighten-1 thin">error</p>
+            </form>
+        </div>
+    </div>
+
+
+
     <script src="https://d3js.org/d3.v5.js"></script>
     <script src="./index.js"></script>
     <script src="./graph.js"></script>
