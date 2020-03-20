@@ -25,3 +25,7 @@ button.active {
 form span {
     color: #00bfa5 !important;
 }
+
+.error {
+    margin-top: 60px;
+}
