@@ -11,10 +11,10 @@ let activity = 'cycling';
 // event listeners
 btns.forEach(btn => {
     btn.addEventListener('click', e => {
-
+        
         // get activity
         activity = e.target.dataset.activity;
-
+        
         // remove and add active class
         btns.forEach(btn => btn.classList.remove('active'))
         e.target.classList.add('active');
