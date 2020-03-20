@@ -29,3 +29,16 @@ form span {
 .error {
     margin-top: 60px;
 }
+
+.flex-it {
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    width: 80% !important;
+}
+
+.btn-clr {
+    background: #00bfa5 !important;
+} 

@@ -29,7 +29,7 @@ btns.forEach(btn => {
 });
 
 // form submit
-form.addEventListener('submit', e => {
+form.addEventListener('submit', (e) => {
     
     // prevent default action
     e.preventDefault();
