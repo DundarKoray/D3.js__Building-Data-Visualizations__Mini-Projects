@@ -45,9 +45,33 @@
         </div>
     </div>
 
+    <!-- FIREBASE -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-firestore.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCYRP5JbH-JOCgvIbHiBX-ni9-lCKwnZZY",
+        authDomain: "udemy-d3-firebase-721c3.firebaseapp.com",
+        databaseURL: "https://udemy-d3-firebase-721c3.firebaseio.com",
+        projectId: "udemy-d3-firebase-721c3",
+        storageBucket: "udemy-d3-firebase-721c3.appspot.com",
+        messagingSenderId: "19418512569",
+        appId: "1:19418512569:web:1ea35b8d65796137b0af68",
+        measurementId: "G-C27SKQZH8W"
+    };
+    
+    // connecting firebase to app
+    firebase.initializeApp(config);
+    const db = firebase.firestore();
+    // const settings = { timestampsInSnapshots: true}
+    // db.settings(settings)
+    </script>
 
-
+    <!-- D3.js -->
     <script src="https://d3js.org/d3.v5.js"></script>
+    
     <script src="./index.js"></script>
     <script src="./graph.js"></script>
 </body>
