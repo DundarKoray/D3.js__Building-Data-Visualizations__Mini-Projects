@@ -42,3 +42,40 @@ input {
 .btn-clr {
     background: #00bfa5 !important;
 } 
+
+.submit-btn {
+    background: #00bfa5 !important;
+    width: 60px !important;
+    height: 60px !important;
+    display: inline-block !important;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-weight: 100;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    animation: animate 1s infinite;
+}
+
+.submit-btn:hover {
+    background: #00a791 !important;   
+}
+  
+@keyframes animate {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 191, 166, 0.70) 0 0 0 rgba(0, 191, 166, 0.70);
+    }
+
+    40% {
+        box-shadow: 0 0 0 10px rgba(255, 0, 64, 0), 0 0 0 0 rgba(0, 191, 166, 0.70);
+    }
+
+    80% {
+        box-shadow: 0 0 0 10px rgba(255, 0, 64, 0), 0 0 0 10px rgba(255, 0, 64, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 64, 0), 0 0 0 20px rgba(255, 0, 64, 0);
+    }
+}
