@@ -39,6 +39,60 @@ input {
     width: 80% !important;
 }
 
+/* styling graph */
+.x-axis path, .y-axis path,
+.x-axis line, .y-axis line {
+    stroke: #ccc;
+}
+
+.x-axis text, .y-axis text {
+    fill: #ccc;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* input button if needed */
+/* 
 .btn-clr {
     background: #00bfa5 !important;
 } 
@@ -78,4 +132,4 @@ input {
     100% {
         box-shadow: 0 0 0 0 rgba(255, 0, 64, 0), 0 0 0 20px rgba(255, 0, 64, 0);
     }
-}
+} */
