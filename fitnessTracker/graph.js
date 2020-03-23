@@ -33,7 +33,8 @@ const update = (data) => {
 
     // create axes
     const xAxis = d3.axisBottom(x)
-        .ticks(4);
+        .ticks(4)
+        .tickFormat(d3.timeFormat('%b %d')); // formating date month date
     
     const yAxis = d3.axisLeft(y)
         .ticks(4);
