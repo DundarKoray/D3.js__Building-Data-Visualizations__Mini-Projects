@@ -37,7 +37,8 @@ const update = (data) => {
         .tickFormat(d3.timeFormat('%b %d')); // formating date month date
     
     const yAxis = d3.axisLeft(y)
-        .ticks(4);
+        .ticks(4)
+        .tickFormat(d => d + 'm');
 
     // call axes
     xAxisGroup.call(xAxis);
