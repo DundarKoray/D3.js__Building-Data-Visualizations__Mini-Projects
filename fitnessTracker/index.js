@@ -1,5 +1,5 @@
 // DOM elements
-const btns = document.querySelectorAll('button');
+const btns = document.querySelectorAll('button[data-activity]');
 const form = document.querySelector('form');
 const formAct = document.querySelector('form span');
 const input = document.querySelector('input');
