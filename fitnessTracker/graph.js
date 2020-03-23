@@ -19,7 +19,7 @@ const y = d3.scaleLinear().range([graphHeight, 0]);
 // axes groups
 const xAxisGroup = graph.append('g')
     .attr('class', 'x-axis')
-    .attr('transfrom', `translate(0, ${graphHeight})`);
+    .attr('transform', `translate(0, ${graphHeight})`);
 
 const yAxisGroup = graph.append('g')
     .attr('class', 'y-axis');
