@@ -36,7 +36,7 @@ form span {
 }
 
 input {
-    width: 80% !important;
+    /* width: 80% !important; */
 }
 
 /* styling graph */
