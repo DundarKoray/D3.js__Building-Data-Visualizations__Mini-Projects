@@ -26,6 +26,7 @@ const yAxisGroup = graph.append('g')
 
 const update = (data) => {
     // console.log(data);
+    data = data.filter(item => item.activity == activity);
 
     // set scale domains (extent find the lowest and the highest value)
     x.domain(d3.extent(data, d => new Date(d.date)));
