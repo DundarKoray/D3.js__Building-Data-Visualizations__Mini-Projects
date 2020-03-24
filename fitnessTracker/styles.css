@@ -50,6 +50,15 @@ input {
     font-size: 14px;
 }
 
+/* .corona-alert {
+    width: 50%;
+    margin: 0 auto;
+} */
+
+.corona {
+    color: #00bfa5;
+    text-decoration: underline;
+}
 
 
 
