@@ -43,6 +43,12 @@ const xDottedLine = dottedLines.append('line')
     .attr('stroke-width', 1)
     .attr('stroke-dasharray', 4);
 
+// create y dotted line and append to dotted line group
+const yDottedLine = dottedLines.append('line')
+    .attr('stroke', '#aaa')
+    .attr('storke-width', 1)
+    .attr('stroke-dasharray', 4);
+
 const update = (data) => {
     // console.log(data);
     data = data.filter(item => item.activity == activity);
