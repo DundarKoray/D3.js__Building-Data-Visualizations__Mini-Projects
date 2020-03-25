@@ -35,6 +35,13 @@ form span {
     justify-content: space-between;
 }
 
+.button-wrap {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 input {
     /* width: 80% !important; */
 }
@@ -59,6 +66,7 @@ input {
     color: #00bfa5;
     text-decoration: underline;
 }
+
 
 
 
