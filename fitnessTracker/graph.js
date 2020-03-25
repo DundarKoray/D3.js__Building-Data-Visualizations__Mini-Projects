@@ -1,22 +1,20 @@
 const margin = { top: 40, right: 20, bottom: 50, left: 100 };
-let graphWidth;
+let graphWidth = 560 - margin.left - margin.right;
 const graphHeight = 400 - margin.top - margin.bottom;
 
 
-function checkScreenSize(screen) {
-    if (screen.matches) { // If media query matches
-      graphWidth = 360 - margin.left - margin.right;
+function checkScreenSize() {
+    if (window.innerWidth < 992) { // If media query matches
+      return graphWidth = 360 - margin.left - margin.right;
     } 
-
-    else {
-        graphWidth = 560 - margin.left - margin.right;
-    }
   }
   
-  let mobileSize= window.matchMedia("(max-width: 700px)")
-//   console.log(mobileSize)
+checkScreenSize()
   
-checkScreenSize(mobileSize) // Call listener function at run time
+window.addEventListener("resize", () =>{
+    console.log(window.innerWidth)
+    return checkScreenSize() 
+})
 
 const svg = d3.select('.canvas')
     .append('svg')
