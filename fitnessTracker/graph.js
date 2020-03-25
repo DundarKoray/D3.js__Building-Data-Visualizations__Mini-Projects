@@ -32,6 +32,11 @@ const line = d3.line()
 // line path element
 const path = graph.append('path'); 
 
+// created dotted line group and append to graph
+const dottedLines = graph.append('g')
+    .attr('class', 'lines')
+    .style('opacity', 0);
+
 const update = (data) => {
     // console.log(data);
     data = data.filter(item => item.activity == activity);
@@ -76,12 +81,16 @@ const update = (data) => {
                 .transition().duration(100)
                     .attr('r', 8)
                     .attr('fill', '#fff');
+            // set x dotted line coords (x1, x2, y1, y2)
+            // set y dotted line coords (x1, x2, y1, y2)
+            // show the dotted line group (.style, opacity)
         })
         .on('mouseleave', (d, i, n) => {
             d3.select(n[i])
                 .transition().duration(100)
                     .attr('r', 4)
                     .attr('fill', '#ccc');
+            // hide the dotted line group (.style, opacity)
         })
     // create axes
     const xAxis = d3.axisBottom(x)
