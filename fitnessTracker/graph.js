@@ -32,10 +32,16 @@ const line = d3.line()
 // line path element
 const path = graph.append('path'); 
 
-// created dotted line group and append to graph
+// created dottled line group and append to graph
 const dottedLines = graph.append('g')
     .attr('class', 'lines')
     .style('opacity', 0);
+
+// create x dotted line and append to dotted line group
+const xDottedLine = dottedLines.append('line')
+    .attr('stroke', '#aaa')
+    .attr('stroke-width', 1)
+    .attr('stroke-dasharray', 4);
 
 const update = (data) => {
     // console.log(data);
