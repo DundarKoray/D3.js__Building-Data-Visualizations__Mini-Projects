@@ -2,6 +2,16 @@ const margin = { top: 40, right: 20, bottom: 50, left: 100 };
 let graphWidth = 560 - margin.left - margin.right;
 const graphHeight = 400 - margin.top - margin.bottom;
 
+/*
+function checkPosition() {
+    (window.matchMedia('(max-width: 767px)').matches) 
+        ? graphWidth = 360 - margin.left - margin.right
+        : null
+}
+
+window.addEventListener("resize", checkPosition())
+*/
+
 
 function checkScreenSize() {
     if (window.innerWidth < 992) { // If media query matches
