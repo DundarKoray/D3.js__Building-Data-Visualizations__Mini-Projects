@@ -260,18 +260,26 @@ const newsData = [
 ];
 
 // create svg
-const svg = d3.select('.canvas3')
+const svg3 = d3.select('.canvas3')
     .append('svg')
     .attr('width', 1060)
     .attr('height', 800);
 
 // create graph group
-const graph = svg.appeng('g')
+const graph3 = svg3.append('g')
     .attr('transform', 'translate(50, 50)'); // to give a 50px margin
 
 // create stratify
 const stratify = d3.stratify()
     .id(d => d.name)
     .parentId(d => d.parent)
+// console.log(stratify(newsData))
 
-console.log(stratify(newsData))
+const rootNode = stratify(newsData)
+    .sum(d => d.amount)
+
+const pack = d3.pack()
+    .size([960, 700])
+    .padding(5)
+
+console.log(pack(rootNode).descendants()) // converts back to array
