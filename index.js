@@ -271,15 +271,24 @@ const graph3 = svg3.append('g')
 
 // create stratify
 const stratify = d3.stratify()
-    .id(d => d.name)
-    .parentId(d => d.parent)
+    .id(d => d.name) // we gotta tell what is the identifier
+    .parentId(d => d.parent) //  we gotta tell who is the parent
 // console.log(stratify(newsData))
 
 const rootNode = stratify(newsData)
-    .sum(d => d.amount)
+    .sum(d => d.amount) // the amount
 
 const pack = d3.pack()
     .size([960, 700])
     .padding(5)
 
-console.log(pack(rootNode).descendants()) // converts back to array
+// console.log(pack(rootNode).descendants()) // converts back to array
+
+const bubbleData = (pack(rootNode).descendants())
+
+// join data and add group for each node
+const nodes = graph3.selectAll('g')
+    .data(bubbleData)
+    .enter()
+    .append('g')
+    .attr('transform', d => `translate(${d.x}, ${d.y})`)
