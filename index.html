@@ -59,7 +59,43 @@
                     
                 </div>
             </div>
-            <p>Circle Packing</p>
+            <p>This is how the stratify data looks like</p>
+            
+            <p class="news-data">
+                
+const newsData = [ <br>
+    // parent <br>
+    { name: 'news', parent: '' },<br><br>
+
+    // categories<br>
+    { name: 'tech', parent: 'news' },<br>
+    { name: 'sport', parent: 'news' },<br>
+    { name: 'music', parent: 'news' },<br><br>
+
+    // tech blogs<br>
+    { name: 'ai', parent: 'tech', amount: 7 },<br>
+    { name: 'coding', parent: 'tech', amount: 5 },<br>
+    { name: 'tablets', parent: 'tech', amount: 4 },<br>
+    { name: 'laptops', parent: 'tech', amount: 6 },<br>
+    { name: 'd3', parent: 'tech', amount: 3 },<br>
+    { name: 'gaming', parent: 'tech', amount: 3 },<br><br>
+
+    // sport blogs<br>
+    { name: 'football', parent: 'sport', amount: 6 },<br>
+    { name: 'hockey', parent: 'sport', amount: 3 },<br>
+    { name: 'baseball', parent: 'sport', amount: 5 },<br>
+    { name: 'tennis', parent: 'sport', amount: 6 },<br>
+    { name: 'formula 1', parent: 'sport', amount: 1 },<br><br>
+
+    // music blogs<br>
+    { name: 'house', parent: 'music', amount: 3 },<br>
+    { name: 'rock', parent: 'music', amount: 2 },<br>
+    { name: 'punk', parent: 'music', amount: 5 },<br>
+    { name: 'jazz', parent: 'music', amount: 2 },<br>
+    { name: 'pop', parent: 'music', amount: 3 },<br>
+    { name: 'classical', parent: 'music', amount: 5 },<br>
+];<br>
+            </p>
         </details>
     </div>
     </div>

@@ -28,6 +28,10 @@ body {
     justify-content: center;
 }
 
+.news-data {
+    text-align: left;
+}
+
 summary {
     text-align: left;
 }
