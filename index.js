@@ -248,7 +248,7 @@ const newsData = [
     { name: 'hockey', parent: 'sport', amount: 3 },
     { name: 'baseball', parent: 'sport', amount: 5 },
     { name: 'tennis', parent: 'sport', amount: 6 },
-    { name: 'f1', parent: 'sport', amount: 1 },
+    { name: 'formula 1', parent: 'sport', amount: 1 },
 
     // music blogs
     { name: 'house', parent: 'music', amount: 3 },
@@ -279,12 +279,14 @@ const rootNode = stratify(newsData)
     .sum(d => d.amount) // the amount
 
 const pack = d3.pack()
-    .size([760, 500])
+    .size([860, 600])
     .padding(5)
 
-// console.log(pack(rootNode).descendants()) // converts back to array
+console.log(pack(rootNode).descendants()) // converts back to array
 
 const bubbleData = (pack(rootNode).descendants())
+
+// create ordinal scale
 
 // join data and add group for each node
 const nodes = graph3.selectAll('g')
@@ -292,10 +294,19 @@ const nodes = graph3.selectAll('g')
     .enter()
     .append('g')
     .attr('transform', d => `translate(${d.x}, ${d.y})`)
+// console.log(nodes)
 
 nodes.append('circle')
     .attr('r', d => d.r)
     .attr('stroke', 'white')
     .attr('stroke-width', 2)
     .attr('fill', 'purple')
-
+    
+// console.log(nodes.filter(d => !d.children))
+nodes.filter(d => !d.children)
+    .append('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', '0.3em') 
+    .attr('fill', 'white')
+    .style('font-size', d => d.value * 5)
+    .text(d => d.data.name)
