@@ -19,8 +19,13 @@ body {
     
 }
 
-.canvas1, {
+.canvas1 {
     border: 1px solid black;
+}
+
+.canvas3-wrapper {
+    display: flex;
+    justify-content: center;
 }
 
 summary {

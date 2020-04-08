@@ -279,7 +279,7 @@ const rootNode = stratify(newsData)
     .sum(d => d.amount) // the amount
 
 const pack = d3.pack()
-    .size([860, 600])
+    .size([960, 700])
     .padding(5)
 
 console.log(pack(rootNode).descendants()) // converts back to array
