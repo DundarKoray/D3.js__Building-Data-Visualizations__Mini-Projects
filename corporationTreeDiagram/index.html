@@ -11,18 +11,46 @@
     <link rel="stylesheet" href="./style.css">
     <title>Corporation Tree Diagram</title>
 </head>
-<body class="pink darken-4">
+<body>
     <div class="nav z-depth-0">
-        <div class="section">
-            <a class="return-button waves-effect waves-light btn thin pink darken-1" href="../index.html">Return to main page</a>
+        <div class="section pink">
+            <a class="return-button waves-effect waves-light btn thin pink darken-3 z-depth-4" href="../index.html">Return to main page</a>
         </div>
-      <div class="section center">
-          <h3 class="white-text center thin"> The Corporation Tree Diagram</h3>
-        <p class="grey-text flow-text thin"> Corporate structures can become very complex-sometimes seeing everything on paper is the only way to really understand how all the parts fit together. </p>
-
+        <div class="pink section center">
+            <h3 class="white-text center thin"> The Corporation Tree Diagram</h3>
+        </div>
+        <div class="grey lighten-3 section grey-text thin" style="position: relative">
+            <p class="flow-text center"> Corporate structures can become very complex-sometimes seeing everything on paper is the only way to really understand how all the parts fit together.
+            </p>
+            <a href="#modal" class="btn-floating btn-large halfway-fab pink pulse modal-trigger">
+                <i class="material-icons">add</i>
+            </a>
+        </div>
+        <div id="modal" class="modal"> <!--modal mean dont show by default-->
+            <div class="modal-content">
+                <h4 class="pink-text center">Add New Employee</h4>
+                <form>
+                    <div class="input-field">
+                        <input type="text" id="name" placeholder="Employee Name">
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="parent" placeholder="Reports to...">
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="department" placeholder="Department">
+                    </div>
+                    <div class="input-field">
+                       <button class="btn pink white-text">Add Employee</button> 
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="canvas">
+            
+        </div>
+    </div>
 
     <!-- FIREBASE -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
