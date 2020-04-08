@@ -279,7 +279,7 @@ const rootNode = stratify(newsData)
     .sum(d => d.amount) // the amount
 
 const pack = d3.pack()
-    .size([960, 700])
+    .size([760, 500])
     .padding(5)
 
 // console.log(pack(rootNode).descendants()) // converts back to array
@@ -292,3 +292,10 @@ const nodes = graph3.selectAll('g')
     .enter()
     .append('g')
     .attr('transform', d => `translate(${d.x}, ${d.y})`)
+
+nodes.append('circle')
+    .attr('r', d => d.r)
+    .attr('stroke', 'white')
+    .attr('stroke-width', 2)
+    .attr('fill', 'purple')
+
