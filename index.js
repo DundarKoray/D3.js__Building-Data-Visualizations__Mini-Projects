@@ -257,8 +257,21 @@ const newsData = [
     { name: 'jazz', parent: 'music', amount: 2 },
     { name: 'pop', parent: 'music', amount: 3 },
     { name: 'classical', parent: 'music', amount: 5 },
-  ];
+];
 
-  const stratify = d3.stratify()
+// create svg
+const svg = d3.select('.canvas3')
+    .append('svg')
+    .attr('width', 1060)
+    .attr('height', 800);
+
+// create graph group
+const graph = svg.appeng('g')
+    .attr('transform', 'translate(50, 50)'); // to give a 50px margin
+
+// create stratify
+const stratify = d3.stratify()
     .id(d => d.name)
     .parentId(d => d.parent)
+
+console.log(stratify(newsData))
