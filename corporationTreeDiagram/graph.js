@@ -9,6 +9,31 @@ const svg = d3.select('.canvas')
 const graph = svg.append('g')
     .attr('transform', 'translate(50,50)');
 
+// data strat
+const stratify = d3.stratify()
+    .id(d => d.name)
+    .parentId(d => d.parent);
+
+const tree = d3.tree()
+    .size([dims.width, dims.height]) // we are specifying tree diagram dims
+
+
+// update function
+const update = (data) => {
+
+    // get updated root Node data
+    const rootNode = stratify(data);
+    // console.log(rootNode);
+
+    const treeData = tree(rootNode); // it give x and y positions
+    // console.log(treeData)
+
+    //get nodes selection and join data (converts it to array)
+    const nodes = graph.selectAll('.node')
+        .data(treeData.descendants())
+
+};
+
 
 
 // data & firebase hook-up
@@ -36,6 +61,6 @@ db.collection('employees').onSnapshot(res => {
 
     })
 
-    console.log(data)
-
+    // console.log(data)
+    update(data)
 })
