@@ -1,3 +1,16 @@
+// dimensions tree diagram
+const dims = { height: 500, width: 1100 } 
+
+const svg = d3.select('.canvas')
+    .append('svg')
+    .attr('width', dims.width + 100) // 50 margin on both sides
+    .attr('height', dims.height + 100) // 50 margin on both up and down
+
+const graph = svg.append('g')
+    .attr('transform', 'translate(50,50)');
+
+
+
 // data & firebase hook-up
 let data = [];
 
