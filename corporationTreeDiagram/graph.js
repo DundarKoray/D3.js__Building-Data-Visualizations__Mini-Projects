@@ -28,10 +28,15 @@ const update = (data) => {
     const treeData = tree(rootNode); // it give x and y positions
     // console.log(treeData)
 
-    //get nodes selection and join data (converts it to array)
+    //get nodes selection and join data (descendants converts it to array)
     const nodes = graph.selectAll('.node')
         .data(treeData.descendants())
 
+    // create enter node groups
+    const enterNodes = nodes.enter()
+        .append('g')
+            .attr('class', 'node')
+            .attr('transform', d => `translate(${d.x}, ${d.y})`)
 };
 
 
