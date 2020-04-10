@@ -21,6 +21,10 @@ const tree = d3.tree()
 // update function
 const update = (data) => {
 
+    // remove current nodes (this fixes new data graph problem)
+    graph.selectAll('.node').remove();
+    graph.selectAll('.links').remove();
+
     // get updated root Node data
     const rootNode = stratify(data);
     // console.log(rootNode);
