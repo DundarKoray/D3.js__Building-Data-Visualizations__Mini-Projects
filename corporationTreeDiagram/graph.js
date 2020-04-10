@@ -28,9 +28,17 @@ const update = (data) => {
     const treeData = tree(rootNode); // it give x and y positions
     // console.log(treeData)
 
-    //get nodes selection and join data (descendants converts it to array)
+    // get nodes selection and join data (descendants converts it to array)
     const nodes = graph.selectAll('.node')
         .data(treeData.descendants())
+
+    console.log('treeData.descendants(): ', treeData.descendants())
+    
+    // get links selection and join data
+    const links = graph.selectAll('.link')
+        .data(treeData.links())
+    
+    console.log('treeData.descendants():', treeData.links())
 
     // create enter node groups
     const enterNodes = nodes.enter()
