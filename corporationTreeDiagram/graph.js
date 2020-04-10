@@ -40,6 +40,18 @@ const update = (data) => {
     
     console.log('treeData.descendants():', treeData.links())
 
+    // enter new links
+    links.enter()
+        .append('path')
+        .attr('class', 'link')
+        .attr('fill', 'none')
+        .attr('stroke', '#aaa')
+        .attr('stroke-width', 2)
+        .attr('d', d3.linkVertical()
+            .x(d => d.x)
+            .y(d => d.y)
+        );
+
     // create enter node groups
     const enterNodes = nodes.enter()
         .append('g')
