@@ -44,7 +44,13 @@ const update = (data) => {
         .attr('stroke', '#555')
         .attr('stroke-width', 2)
         .attr('height', 50)
-        .attr('width', d => d.data.name.length * 20) // coz everyname is different 
+        .attr('width', d => d.data.name.length * 20); // coz everyname is different 
+    
+    // append text to each nodes   
+    enterNodes.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('fill', 'white')
+        .text(d => d.data.name)
 };
 
 
